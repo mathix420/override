@@ -1,0 +1,58 @@
+int	auth(char *s1, int32_t ch)
+{
+	int32_t	len;
+	void	10h;
+	void	14h;
+
+	s1[strcspn(s1, "\n") + *s1] = 0;
+
+	if ((len = strnlen(s1, 32)) <= 5) return 1;
+
+	// check if ptrace was already called
+	if (ptrace(PTRACE_TRACEME, 0, 1, 0) == -1)
+	{
+		puts("\033[32m.---------------------------.");
+		puts("\033[31m| !! TAMPERING DETECTED !!  |");
+		puts("\033[32m'---------------------------'");
+		return 1;
+	}
+	10h = ((0xff & (char)(*s1 + 3)) ^ 0x1337) + 0x5eeded;
+	14h = 0;
+
+	while (14h < len)
+	{
+		if (s1[14h] <= 31) return 1;
+		10h += hash(s1[14h++]);
+	}
+
+	if (ch != 10h) return 1;
+
+	return 0;
+}
+
+int	main(char **envp)
+{
+	char	s[32];
+	int32_t	stream;
+
+	// canary checks
+
+	puts("***********************************");
+	puts("*\t\tlevel06\t\t  *");
+	puts("***********************************");
+	printf("-> Enter Login: ");
+	fgets(&s, 32, stdin);
+
+        puts("***********************************");
+        puts("***** NEW ACCOUNT DETECTED ********");
+        puts("***********************************");
+	printf("-> Enter Serial: ");
+	scanf("%u", stream);
+
+	if (auth(s, stream)) return 1;
+
+	puts("Authenticated!");
+	system("/bin/sh");
+
+	return 0;
+}
