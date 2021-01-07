@@ -1,4 +1,4 @@
-1. Le programme fork, le parent va rentrer dans la boucle infinie, et l'enfant dans la premiere condition. L'utilisation de la fonction `gets` creer une vulnerabilite que l'on peut exploiter.
+1. Le programme fork, le parent va rentrer dans la boucle infinie, et l'enfant dans la premiere condition. L'utilisation de la fonction `gets` cree une vulnerabilite que l'on peut exploiter.
 
 2. On passe gdb en mode follow-child avec la commande `set follow-fork-mode child`.
 

@@ -1,4 +1,4 @@
-1. On decouvre le programme en plus de certaines fonctions non appelee explicitement.
+1. On decouvre le programme en plus de certaines fonctions non appelees explicitement.
    ```
    (gdb) info functions
 
@@ -10,7 +10,7 @@
    0x0804885a  main
    ```
 
-2. On remarque que le programme appelle toujours la fonction `decrypt`, mais egalement que la fonction `decrypt` applique un `XOR` avec la clef. Etant donne que nous connaissons le resultat final de l'opperation ainsi que les datas initiales, on peut en deduire la clef.
+2. On remarque que le programme appelle toujours la fonction `decrypt`, mais egalement que la fonction `decrypt` applique un `XOR` avec la clef. Etant donne que nous connaissons le resultat final de l'operation ainsi que les datas initiales, on peut en deduire la clef.
    ```
    # On sait que
    "Q}|u`sfg~sf{}|a3" ^ key = "Congratulations!"

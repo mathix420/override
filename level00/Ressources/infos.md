@@ -1,4 +1,4 @@
-1. En traduisant le programme en C on comprends son fonctionnement.
+1. En traduisant le programme en C on comprend son fonctionnement.
 
 ```
 ./level00

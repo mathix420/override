@@ -1,4 +1,4 @@
-1. Buffer overflow sur la fct set_username de 1 byte. L'espace memoire se trouvant a user+40 est la length du message. On peut donc modifier cette valeur afin de creer un second buffer overflow sur message.
+1. Buffer overflow sur la fct set_username de 1 byte. L'espace memoire se trouvant a user+40 est la longueur du message. On peut donc modifier cette valeur afin de creer un second buffer overflow sur message.
 
 ```
 (gdb) p secret_backdoor

