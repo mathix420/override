@@ -1,0 +1,99 @@
+int32_t	get_unum()
+{
+	int32_t	tmp;
+
+	fflush(stdout);
+	scanf("%u", &tmp);
+	clear_stdin();
+
+	return tmp;
+}
+
+int	read_number(argument)
+{
+	var_ch = 0;
+
+	printf(" Index: ");
+	var_ch = get_unum();
+
+	//  *((var_ch << 2) + argument)
+	printf(" Number at data[%u] is %u\n", var_ch, argument[var_ch * 4]);
+	return 0;
+}
+
+int	store_number(argument)
+{
+	var_10h = 0;
+	var_ch = 0;
+
+	printf(" Number: ");
+	var_10h = get_unum();
+
+	printf(" Index: ");
+	var_ch = get_unum();
+
+	if (var_ch % 3 == 0 || var_10h >> 24 == 183) // similar to / by 16777216
+	{
+		puts(" *** ERROR! ***");
+		puts("   This index is reserved for wil!");
+		puts(" *** ERROR! ***");
+		return 1;
+	}
+
+	// *((var_ch << 2) + argument) = var_10h;
+	// soit
+	argument[var_ch * 4] = var_10h;
+
+	return 0;
+}
+
+int	main(char **argv, char **envp)
+{
+	// canary stuff
+
+	var_1b4h = 0;
+	var_1b8h = 0;
+	var_1bch = 0;
+	var_1c0h = 0;
+	var_1c4h = 0;
+	var_1c8h = 0;
+	var_24h[100] = {};
+
+	while (**argv)
+	      memset(*argv, 0, strlen(*argv++));
+	while (**envp)
+              memset(*envp, 0, strlen(*envp++));
+
+	puts(----------------------------------------------------\n  Welcome to wil's crappy number storage service!   \n----------------------------------------------------\n Commands:                                          \n    store - store a number into the data storage    \n    read  - read a number from the data storage     \n    quit  - exit the program                        \n----------------------------------------------------\n   wil has reserved some storage :>                 \n----------------------------------------------------\n);
+
+	while (1)
+	{
+		printf("Input command: ");
+		fgets(var_1b8h, 20, stdin);
+		var_1b8h[strlen(var_1b8h) - 1] = 0;
+
+
+		if (!strncmp("store", var_1b8h, 5))
+		   var_1b4h = store_number(var_24h);
+		else if (!strncmp("read", var_1b8h, 4))
+		   var_1b4h = read_number(var_24h);
+		else if (!strncmp("quit", var_1b8h, 4))
+		   return 0;
+		else
+		   var_1b4h = 1;
+
+		if (!var_1b4h)
+		   printf(" Completed %s command successfully\n", var_1b8h);
+		else
+		   printf(" Failed to do %s command\n", var_1b8h);
+
+		var_1b8h = 0;
+		var_1bch = 0;
+		var_1c0h = 0;
+		var_1c4h = 0;
+		var_1c8h = 0;
+	}
+
+	// check canary
+	return 0;
+}
